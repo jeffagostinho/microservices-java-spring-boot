@@ -1,0 +1,32 @@
+services:
+    java-mysql:
+        container_name: java-mysql
+        image: 'mysql/mysql-server:8.0'
+        ports:
+            - '3306:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '1234'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: 'java_class'
+            MYSQL_USER: 'java'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
+        volumes:
+            - 'java-mysql-data:/var/lib/mysql'
+        networks:
+            - java
+        healthcheck:
+            test:
+                - CMD
+                - mysqladmin
+                - ping
+                - '-p password'
+            retries: 3
+            timeout: 5s
+
+networks:
+    java:
+        driver: bridge
+volumes:
+    java-mysql-data:
+        driver: local
