@@ -9,3 +9,4 @@ spring:
       server:
         git:
           uri: https://github.com/jeffagostinho/microservices-java-spring-boot-config-server
+          search-paths: "greeting-service*"

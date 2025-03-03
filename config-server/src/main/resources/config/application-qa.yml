@@ -1,3 +1,0 @@
-greeting-service:
-  greeting: "Hello"
-  default-value: "QA"

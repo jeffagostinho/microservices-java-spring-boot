@@ -3,10 +3,11 @@ server:
 spring:
   application:
     name: greeting-service
+  config:
+    import: optional:configserver:http://localhost:8888/
   cloud:
     config:
-      import-check:
-        enabled: false
+      profile: prod
 
 management:
   endpoints:
@@ -14,7 +15,3 @@ management:
       exposure:
         include:
         - "*"
-
-greeting-service:
-  greeting: "Olá"
-  default-value: "Mundo"
