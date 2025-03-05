@@ -44,7 +44,12 @@ public class BookController {
 
         String port = environment.getProperty("local.server.port");
 
-        book.setEnvironment(port + " feign");
+        book.setEnvironment("Book port: "
+                + port
+                + " Exchange port: "
+                + exchange.getEnvironment()
+        );
+
         book.setCurrency(currency);
         book.setPrice(exchange.getConvertedValue());
 
