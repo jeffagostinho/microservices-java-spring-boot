@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 @RestController
-@RequestMapping("/exchange")
+@RequestMapping("/exchanges")
 public class ExchangeController {
 
     @Autowired
