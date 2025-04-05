@@ -2,6 +2,8 @@ package br.com.jeffagostinho.controller;
 
 import br.com.jeffagostinho.model.Exchange;
 import br.com.jeffagostinho.repository.ExchangeRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@Tag(name = "Exchange endpoint")
 @RestController
 @RequestMapping("/exchanges")
 public class ExchangeController {
@@ -22,6 +25,7 @@ public class ExchangeController {
     @Autowired
     private ExchangeRepository exchangeRepository;
 
+    @Operation(summary = "Get exchange by amount, from and to")
     @GetMapping("/{amount}/{from}/{to}")
     public Exchange getExchange(
             @PathVariable("amount") BigDecimal amount,

@@ -27,9 +27,9 @@ public class ApiGatewayConfiguration {
 //                .route(p -> p.path("/exchanges/**")
 //                        .uri("lb://exchange-service")
 //                )
-                .route(p -> p.path("/books/**")
-                        .uri("lb://book-service")
-                )
+//                .route(p -> p.path("/books/**")
+//                        .uri("lb://book-service")
+//                )
                 .build();
     }
 }

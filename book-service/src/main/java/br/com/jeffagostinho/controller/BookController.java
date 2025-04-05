@@ -4,6 +4,8 @@ import br.com.jeffagostinho.model.Book;
 import br.com.jeffagostinho.proxy.ExchangeProxy;
 import br.com.jeffagostinho.repository.BookRepository;
 import br.com.jeffagostinho.response.Exchange;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
-
+@Tag(name = "Book endpoint")
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -27,6 +29,7 @@ public class BookController {
     @Autowired
     private ExchangeProxy exchangeProxy;
 
+    @Operation(summary = "Get book by id and currency")
     @GetMapping(value = "/{id}/{currency}")
     public Book getBook(
             @PathVariable("id") Long id,

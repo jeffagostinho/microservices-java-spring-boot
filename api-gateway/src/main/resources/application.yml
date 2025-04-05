@@ -7,16 +7,31 @@ eureka:
 spring:
   application:
     name: api-gateway
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: exchange-service
+#          uri: lb://exchange-service
+#          predicates:
+#            - Path=/exchanges/**
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
       routes:
         - id: exchange-service
           uri: lb://exchange-service
           predicates:
             - Path=/exchanges/**
-#  cloud:
-#    gateway:
-#      discovery:
-#        locator:
-#          enabled: true
-#          lower-case-service-id: true
+        - id: book-service
+          uri: lb://book-service
+          predicates:
+            - Path=/books/**
+        - id: openapi
+          uri: lb://api-gateway
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs

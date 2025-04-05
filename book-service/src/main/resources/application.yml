@@ -47,3 +47,5 @@ spring:
     password: 1234
     baseline-on-migrate: true
     locations: classpath:db/migrations
+springdoc:
+  show-actuator: true
